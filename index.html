@@ -1,211 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Document</title>
 </head>
+
 <body>
-    <div class="sidenav">
-        <a href="#VM/Ubuntu">VM og Ubuntu</a>
-        <a href="#ssh">SSH</a>
-        <a href="#Apache2">Apache2</a>
-        <a href="#hostoppsett">Virtual Host</a>
+  <div class="sidenav">
+    <a href="#VM/Ubuntu">VM og Ubuntu</a>
+    <a href="#ssh">SSH</a>
+    <a href="#Apache2">Apache2</a>
+    <a href="#hostoppsett">Virtual Host</a>
+  </div>
+  <div class="main">
+    <h1>Ubuntu webserver guide</h1>
+    <p><button onclick="darkMode()">Toggle dark mode</button> Jostein Leander Langmo, Bleiker VGS, 2ITB, Oktober 2022
+    </p>
+    <p>Denne websiden viser hvordan man setter opp en VM, installerer Ubuntu og konfiguerer. Den viser også hvordan man
+      installerer Apache og hoster en webside</p>
+    <p>Bilder og video kan klikkes på og bli forstørret</p>
+    <h2 id="VM/Ubuntu">Opprette VM og installere Ubuntu Linux (64-bit)</h2>
+    <p>Nedenfor er det en video om hvordan man oppretter VM og installerer Ubuntu 20.04. Definerer og velger norsk
+      tastatur for Mac</p>
+    <div>
+      <video width="320" height="240" controls>
+        <source src="/video/video.mp4" type="video/mp4">
+      </video>
     </div>
-    <div class="main">
-        <h1>Ubuntu webserver guide</h1>
-        <p><button onclick="darkMode()">Toggle dark mode</button> Jostein Leander Langmo, Bleiker VGS, 2ITB, Oktober 2022</p>
-        <p>Denne websiden viser hvordan man setter opp en VM, installerer Ubuntu og konfiguerer. Den viser også hvordan man installerer Apache og hoster en webside</p>
-        <p>Bilder og video kan klikkes på og bli forstørret</p>
-        <h2 id="VM/Ubuntu">Opprette VM og installere Ubuntu Linux (64-bit)</h2> 
-        <p>Nedenfor er det en video om hvordan man oppretter VM og installerer Ubuntu 20.04. Definerer og velger norsk tastatur for Mac</p>
-        <div>
-            <video width="320" height="240" controls>
-                <source src="/video/video.mp4" type="video/mp4">
-            </video>
-        </div>
-        <br>
-        <h3 id="IP">Konfigurer IP-adresse</h3>
-        <p>Nedenfor vises et bilde av en statisk IP-adresse på IPv4</p>
-        <img id="ipadressebilde" src="bilder/IPadresse.png" alt="ipv4" style="width:100%; max-width:300px;">
-        <div id="myModal" class="modal">
-          <span class="close">x</span>
-          <img class="modal-content" id="imgModal">
-          <div id="caption"></div>
-        </div>
-        <br> <br>
-        <h3 id="serverProfile">Definere serverprofilen</h3>
-        <p>Nedenfor er det et bilde av hvordan jeg satte opp min profil</p>
-        <img id="serverprofilebilde" src="bilder/ServerProfil.png" alt="SProfil" style="width:100%; max-width:300px;">
-        <div id="myModal" class="modal">
-          <span class="close">x</span>
-          <img class="modal-content" id="imgModal">
-          <div id="caption"></div>
-        </div>
-        <br> <br>
-        <h3 id="SSHsetup">SSH setup</h3>
-        <p>Nedenfor viser bildet at du må installere Open SSH</p>
-        <img id="OpenSSHbilde" src="bilder/OpenSSH.png" alt="OpenSSH" style="width:100%; max-width:300px;">
-        <div id="myModal" class="modal">
-          <span class="close">x</span>
-          <img class="modal-content" id="imgModal">
-          <div id="caption"></div>
-        </div>
-        <p><b>Logg inn med brukernavn og passord som du definerte tidligere</b></p>
-        <br>
-        <h2 id="ssh">SSH</h2>
-        <p>Man bruker SSH for å få tilgang til serveren fra annnen maskin. SSH er forkortelsen for Secure Shell som er en nettverksprotokoll.</p>
-        <p>Tips bruker annen terminal for spaeialtegn, spesielt på Mac</p>
-        <h3>Tilgjengeligjør SSH</h3>
-        <p>Følgende kommando må skrives for å tilgjengeligjøre SSH</p>
-        <h4>sudo ufw allow ssh</h4>
-        <p>Følgende kommando slår på firewall</p>
-        <h4>sudo ufw enable</h4>
-        <p>Du kan så kjøre en status for å sjekke om porten er åpen</p>
-        <h4>sudo ufw status</h4>
-        <p>For å finne IP-adresse skriv følgende kommando</p>
-        <h4>hostname -I</h4>
-        <p>Åpner terminal vindu for så å få tilgang til serveren, og skriver følgende i terminal vinduet</p>
-        <h4>ssh brukernavn@IP-adresse</h4>
-        <p>Tips: Får du lignende feilmelding som nedenfor så må du slette filen som ligger i .../.ssh og som heter known_hosts (filen som den referer til i feilmeldingen)</p>
-        <img id="mSSHfeilbilde" src="bilder/SSHfeilmelding.png" alt="Feilmelding" style="width:100%; max-width:300px;">
-        <div id="myModal" class="modal">
-          <span class="close">x</span>
-          <img class="modal-content" id="imgModal">
-          <div id="caption"></div>
-        </div>
-        <br><br>
-        <h2 id="Apache2">Installere Apache2</h2>
-        <p>Følgende gjøres for å installere Apache2</p>
-        <p>Først oppdatere pakkene, slik at du har de nyeste</p>
-        <h4>sudo apt update</h4>
-        <p>Installere apache2</p>
-        <h4>sudo apt install apache2</h4>
-        <p>Se liste over applikasjonsprofiler for firewall med komandoen</p>
-        <h4>sudo ufw app list</h4>
-        <img id="APListbilde" src="bilder/ApacheProfilesList.png" alt="A.P.List" style="width:100%; max-width:300px;">
-        <div id="myModal" class="modal">
-          <span class="close">x</span>
-          <img class="modal-content" id="imgModal">
-          <div id="caption"></div>
-        </div>
-        <p>Tilgjengeligjør Apache</p>
-        <h4>sudo ufw allow 'Apache'</h4>
-        <p>Sjekk status ved å bruke kommandoen</p>
-        <h4>sudo ufw status</h4>
-        <p>For å sjekke at webserveren kjører, bruk følgende kommando</p>
-        <h4>sudo systemctl status apache2</h4>
-        <p>Bildet under viser status</p>
-        <img id="StatusApachebilde" src="bilder/StatusApache.png" alt="AStatus" style="width:100%; max-width:300px;">
-        <div id="myModal" class="modal">
-          <span class="close">x</span>
-          <img class="modal-content" id="imgModal">
-          <div id="caption"></div>
-        </div>
-        <br><br>
-        <p>Åpne browser og skriver inn IP-adressen for å se at den fungerer</p>
-        <h4>http://10.12.27.69</h4>
-        <p>Da skal du få opp Ubuntu 22.04 webside</p>
-        <br>
-        <h2 id="hostoppsett">Sette opp Virtual host i Apache</h2>
-        <p>Lage en katalog med samme navn som domene du vil bruke</p>
-        <h4>sudo mkdir -p /var/www/jola.ikt-fag.no/html</h4>
-        <p>Sett eierskap til katalogen med kommandoen</p>
-        <h4>sudo chown -R $USER:$USER /var/www/jola.ikt-fag.no/html</h4>
-        <p>Endre lese, skrive og kjøre rettigheter til katalogen</p>
-        <h4>sudo chmod -R 755 /var/www/jola.ikt-fag.no</h4>
-        <p>Lager en index.html for å teste ved hjelp av nano (editor)</p>
-        <h4>nano /var/www/jola.ikt-fag.no/html/index.html</h4>
-        <p>Skriv inn følgende som bildet under</p>
-        <img id="eksempelindexbilde" src="bilder/eksempelIndex.png" alt="EIndex" style="width:100%; max-width:300px;">
-        <div id="myModal" class="modal">
-          <span class="close">x</span>
-          <img class="modal-content" id="imgModal">
-          <div id="caption"></div>
-        </div>
-        <p>Trykk CTRL+X og y og trykk ENTER</p>
-        <br>
-        <h3>Lag en virtuell host file</h3>
-        <p>For å lage en virtuell host file bruker jeg nano (editor)</p>
-        <h4>sudo nano /etc/apache2/sites-available/jola.ikt-fag.no.conf</h4>
-        <p>Skriv inn følgende som bildet under og lagre den</p>
-        <img id="hostfilebilde" src="bilder/HostFile.png" alt="hostfile" style="width:100%; max-width:300px;">
-        <div id="myModal" class="modal">
-          <span class="close">x</span>
-          <img class="modal-content" id="imgModal">
-          <div id="caption"></div>
-        </div>
-        <br><br>
-        <p>Bruker a2ensite for å tilgjengeligjøre host file</p>
-        <h4>sudo a2ensite jola.ikt-fag.no.conf</h4>
-        <p>For å skru av standard host file, brukes kommandoen</p>
-        <h4>sudo a2dissite 000-default.conf</h4>
-        <p>Sjekk filen for konfigurasjonsfeil</p>
-        <h4>sudo apache2ctl configtest</h4>
-        <p>Hvis du ikke får følgende feil som bildet under viser, kan du hoppe over punktene med servername.conf filen</p>
-        <img id="configfeilbilde" src="bilder/feil.png" alt="configfeil" style="width:100%; max-width:300px;">
-        <div id="myModal" class="modal">
-          <span class="close">x</span>
-          <img class="modal-content" id="imgModal">
-          <div id="caption"></div>
-        </div>
-        <p>Følg kommandoen under for å fikse det</p>
-        <h4>sudo nano /etc/apache2/conf-available/servername.conf</h4>
-        <p>Legg inn følgende linje og lagre filen</p>
-        <h4>ServerName jola.ikt-fag.no</h4>
-        <p>Så må følgende kommando kjøres</p>
-        <h4>sudo a2enconf servername</h4>
-        <p>Så kan du kjøre en ny konfigtest</p>
-        <p>Så kan du restarte Apache2</p>
-        <h4>sudo systemctl restart apache2</h4>
-        <p>Ta opp en browser og skriv følgende</p>
-        <h4>jola.ikt-fag.no</h4>
-        <p>Nå skal du få opp websiden du lagde</p>
-
+    <br>
+    <h3 id="IP">Konfigurer IP-adresse</h3>
+    <p>Nedenfor vises et bilde av en statisk IP-adresse på IPv4</p>
+    <img id="ipadressebilde" src="bilder/IPadresse.png" alt="ipv4" style="width:100%; max-width:300px;">
+    <div id="myModal" class="modal">
+      <span class="close">x</span>
+      <img class="modal-content" id="imgModal">
+      <div id="caption"></div>
     </div>
+    <br> <br>
+    <h3 id="serverProfile">Definere serverprofilen</h3>
+    <p>Nedenfor er det et bilde av hvordan jeg satte opp min profil</p>
+    <img id="serverprofilebilde" src="bilder/ServerProfil.png" alt="SProfil" style="width:100%; max-width:300px;">
+    <div id="myModal" class="modal">
+      <span class="close">x</span>
+      <img class="modal-content" id="imgModal">
+      <div id="caption"></div>
+    </div>
+    <br> <br>
+    <h3 id="SSHsetup">SSH setup</h3>
+    <p>Nedenfor viser bildet at du må installere Open SSH</p>
+    <img id="OpenSSHbilde" src="bilder/OpenSSH.png" alt="OpenSSH" style="width:100%; max-width:300px;">
+    <div id="myModal" class="modal">
+      <span class="close">x</span>
+      <img class="modal-content" id="imgModal">
+      <div id="caption"></div>
+    </div>
+    <p><b>Logg inn med brukernavn og passord som du definerte tidligere</b></p>
+    <br>
+    <h2 id="ssh">SSH</h2>
+    <p>Man bruker SSH for å få tilgang til serveren fra annnen maskin. SSH er forkortelsen for Secure Shell som er en
+      nettverksprotokoll.</p>
+    <p>Tips bruker annen terminal for spaeialtegn, spesielt på Mac</p>
+    <h3>Tilgjengeligjør SSH</h3>
+    <p>Følgende kommando må skrives for å tilgjengeligjøre SSH</p>
+    <h4>sudo ufw allow ssh</h4>
+    <p>Følgende kommando slår på firewall</p>
+    <h4>sudo ufw enable</h4>
+    <p>Du kan så kjøre en status for å sjekke om porten er åpen</p>
+    <h4>sudo ufw status</h4>
+    <p>For å finne IP-adresse skriv følgende kommando</p>
+    <h4>hostname -I</h4>
+    <p>Åpner terminal vindu for så å få tilgang til serveren, og skriver følgende i terminal vinduet</p>
+    <h4>ssh brukernavn@IP-adresse</h4>
+    <p>Tips: Får du lignende feilmelding som nedenfor så må du slette filen som ligger i .../.ssh og som heter
+      known_hosts (filen som den referer til i feilmeldingen)</p>
+    <img id="mSSHfeilbilde" src="bilder/SSHfeilmelding.png" alt="Feilmelding" style="width:100%; max-width:300px;">
+    <div id="myModal" class="modal">
+      <span class="close">x</span>
+      <img class="modal-content" id="imgModal">
+      <div id="caption"></div>
+    </div>
+    <br><br>
+    <h2 id="Apache2">Installere Apache2</h2>
+    <p>Følgende gjøres for å installere Apache2</p>
+    <p>Først oppdatere pakkene, slik at du har de nyeste</p>
+    <h4>sudo apt update</h4>
+    <p>Installere apache2</p>
+    <h4>sudo apt install apache2</h4>
+    <p>Se liste over applikasjonsprofiler for firewall med komandoen</p>
+    <h4>sudo ufw app list</h4>
+    <img id="APListbilde" src="bilder/ApacheProfilesList.png" alt="A.P.List" style="width:100%; max-width:300px;">
+    <div id="myModal" class="modal">
+      <span class="close">x</span>
+      <img class="modal-content" id="imgModal">
+      <div id="caption"></div>
+    </div>
+    <p>Tilgjengeligjør Apache</p>
+    <h4>sudo ufw allow 'Apache'</h4>
+    <p>Sjekk status ved å bruke kommandoen</p>
+    <h4>sudo ufw status</h4>
+    <p>For å sjekke at webserveren kjører, bruk følgende kommando</p>
+    <h4>sudo systemctl status apache2</h4>
+    <p>Bildet under viser status</p>
+    <img id="StatusApachebilde" src="bilder/StatusApache.png" alt="AStatus" style="width:100%; max-width:300px;">
+    <div id="myModal" class="modal">
+      <span class="close">x</span>
+      <img class="modal-content" id="imgModal">
+      <div id="caption"></div>
+    </div>
+    <br><br>
+    <p>Åpne browser og skriver inn IP-adressen for å se at den fungerer</p>
+    <h4>http://10.12.27.69</h4>
+    <p>Da skal du få opp Ubuntu 22.04 webside</p>
+    <br>
+    <h2 id="hostoppsett">Sette opp Virtual host i Apache</h2>
+    <p>Lage en katalog med samme navn som domene du vil bruke</p>
+    <h4>sudo mkdir -p /var/www/jola.ikt-fag.no/html</h4>
+    <p>Sett eierskap til katalogen med kommandoen</p>
+    <h4>sudo chown -R $USER:$USER /var/www/jola.ikt-fag.no/html</h4>
+    <p>Endre lese, skrive og kjøre rettigheter til katalogen</p>
+    <h4>sudo chmod -R 755 /var/www/jola.ikt-fag.no</h4>
+    <p>Lager en index.html for å teste ved hjelp av nano (editor)</p>
+    <h4>nano /var/www/jola.ikt-fag.no/html/index.html</h4>
+    <p>Skriv inn følgende som bildet under</p>
+    <img id="eksempelindexbilde" src="bilder/eksempelIndex.png" alt="EIndex" style="width:100%; max-width:300px;">
+    <div id="myModal" class="modal">
+      <span class="close">x</span>
+      <img class="modal-content" id="imgModal">
+      <div id="caption"></div>
+    </div>
+    <p>Trykk CTRL+X og y og trykk ENTER</p>
+    <br>
+    <h3>Lag en virtuell host file</h3>
+    <p>For å lage en virtuell host file bruker jeg nano (editor)</p>
+    <h4>sudo nano /etc/apache2/sites-available/jola.ikt-fag.no.conf</h4>
+    <p>Skriv inn følgende som bildet under og lagre den</p>
+    <img id="hostfilebilde" src="bilder/HostFile.png" alt="hostfile" style="width:100%; max-width:300px;">
+    <div id="myModal" class="modal">
+      <span class="close">x</span>
+      <img class="modal-content" id="imgModal">
+      <div id="caption"></div>
+    </div>
+    <br><br>
+    <p>Bruker a2ensite for å tilgjengeligjøre host file</p>
+    <h4>sudo a2ensite jola.ikt-fag.no.conf</h4>
+    <p>For å skru av standard host file, brukes kommandoen</p>
+    <h4>sudo a2dissite 000-default.conf</h4>
+    <p>Sjekk filen for konfigurasjonsfeil</p>
+    <h4>sudo apache2ctl configtest</h4>
+    <p>Hvis du ikke får følgende feil som bildet under viser, kan du hoppe over punktene med servername.conf filen</p>
+    <img id="configfeilbilde" src="bilder/feil.png" alt="configfeil" style="width:100%; max-width:300px;">
+    <div id="myModal" class="modal">
+      <span class="close">x</span>
+      <img class="modal-content" id="imgModal">
+      <div id="caption"></div>
+    </div>
+    <p>Følg kommandoen under for å fikse det</p>
+    <h4>sudo nano /etc/apache2/conf-available/servername.conf</h4>
+    <p>Legg inn følgende linje og lagre filen</p>
+    <h4>ServerName jola.ikt-fag.no</h4>
+    <p>Så må følgende kommando kjøres</p>
+    <h4>sudo a2enconf servername</h4>
+    <p>Så kan du kjøre en ny konfigtest</p>
+    <p>Så kan du restarte Apache2</p>
+    <h4>sudo systemctl restart apache2</h4>
+    <p>Ta opp en browser og skriv følgende</p>
+    <h4>jola.ikt-fag.no</h4>
+    <p>Nå skal du få opp websiden du lagde</p>
 
-    <footer> 
-      <p>Jostein Leander Langmo</p>
-      <a href="mailto:jlelangmo@gmail.com">jlelangmo@gmail.com</a>
-      <a href="https://discord.gg/GxvDAptdMX">For support click link</a>
+  </div>
+
+  <footer>
+    <p>Jostein Leander Langmo</p>
+    <a href="mailto:jlelangmo@gmail.com">jlelangmo@gmail.com</a>
+    <a href="https://discord.gg/GxvDAptdMX">For support click link</a>
   </footer>
 
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-        
-        // Get the image and insert it inside the modal - use its "alt" text as a caption
-        var ipadressebilde = document.getElementById("ipadressebilde").onclick = showPic;
-        var serverprofilebilde = document.getElementById("serverprofilebilde").onclick = showPic;
-        var OpenSSHbilde = document.getElementById("OpenSSHbilde").onclick = showPic;
-        var mSSHfeilbilde = document.getElementById("mSSHfeilbilde").onclick = showPic;
-        var APListbilde = document.getElementById("APListbilde").onclick = showPic;
-        var StatusApachebilde = document.getElementById("StatusApachebilde").onclick = showPic;
-        var eksempelindexbilde = document.getElementById("eksempelindexbilde").onclick = showPic;
-        var hostfilebilde = document.getElementById("hostfilebilde").onclick = showPic;
-        var configfeilbilde = document.getElementById("configfeilbilde").onclick = showPic;
-        var modalImg = document.getElementById("imgModal");
-        var captionText = document.getElementById("caption");
-        function showPic(){
-          modal.style.display = "block";
-          modalImg.src = this.src;
-          captionText.innerHTML = this.alt;
-        }
-        
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() { 
-          modal.style.display = "none";
-        }
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
 
-        function darkMode() {
-            var element = document.body;
-            element.classList.toggle("dark-mode");
-        }   
-    </script>
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var ipadressebilde = document.getElementById("ipadressebilde").onclick = showPic;
+    var serverprofilebilde = document.getElementById("serverprofilebilde").onclick = showPic;
+    var OpenSSHbilde = document.getElementById("OpenSSHbilde").onclick = showPic;
+    var mSSHfeilbilde = document.getElementById("mSSHfeilbilde").onclick = showPic;
+    var APListbilde = document.getElementById("APListbilde").onclick = showPic;
+    var StatusApachebilde = document.getElementById("StatusApachebilde").onclick = showPic;
+    var eksempelindexbilde = document.getElementById("eksempelindexbilde").onclick = showPic;
+    var hostfilebilde = document.getElementById("hostfilebilde").onclick = showPic;
+    var configfeilbilde = document.getElementById("configfeilbilde").onclick = showPic;
+    var modalImg = document.getElementById("imgModal");
+    var captionText = document.getElementById("caption");
+    function showPic() {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    function darkMode() {
+      var element = document.body;
+      element.classList.toggle("dark-mode");
+    }   
+  </script>
 </body>
+
 </html>
